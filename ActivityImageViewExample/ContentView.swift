@@ -6,11 +6,35 @@
 //
 
 import SwiftUI
+import PSActivityImageViewController
 
 struct ContentView: View {
+    
+    let image = Image("Image")
+    
+    @State
+    var activityItem: ActivityImageItem? = nil
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        
+        VStack(spacing: 16) {
+                
+            image
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .padding()
+            
+            Button(
+                action: {
+                    activityItem = ActivityImageItem(image: image)
+                },
+                label: {
+                    Text("Share image")
+                }
+            )
+            .activityImageSheet($activityItem)
+        }
+        .padding()
     }
 }
 
