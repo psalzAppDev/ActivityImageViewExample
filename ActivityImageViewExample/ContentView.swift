@@ -10,7 +10,7 @@ import PSActivityImageViewController
 
 struct ContentView: View {
     
-    let image = Image("Image")
+    let image = UIImage(named: "Image")!
     
     @State
     var activityItem: ActivityImageItem? = nil
@@ -19,7 +19,7 @@ struct ContentView: View {
         
         VStack(spacing: 16) {
                 
-            image
+            Image(uiImage: image)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .padding()
